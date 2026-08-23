@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Periodic Table 3D — by Jitumoni</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="controls">
+    <div class="controls-group display br">
+      <button class="is-active toggle" id="table">table</button>
+      <button class="toggle" id="orbit">orbit</button>
+      <button class="toggle" id="spiral">spiral</button>
+      <button class="toggle" id="wave">wave</button>
+      <button class="toggle" id="category">category</button>
+      <button id="list-btn">list</button>
+      <button id="quiz-btn">quiz</button>
+      <button id="about-btn">about</button>
+    </div>
+  </div>
+  <div id="scene">
+    <div id="scene-content" data-layout="table"></div>
+  </div>
+  <div class="credits">
+    &copy; <span id="copyright-year">2026</span> Jitumoni. All rights reserved.
+  </div>
+
+  <div id="about-overlay" class="about-overlay" hidden>
+    <div class="about-card br">
+      <button id="about-close" class="about-close" aria-label="Close">&times;</button>
+      <h2 class="about-title" id="about-title-text">About this project</h2>
+      <p class="about-text" id="about-desc-text">
+        An interactive 3D periodic table that lets you flip between table, orbit, spiral, and wave
+        layouts, with every element carrying its correct atomic number, mass, density, and melting/boiling points.
+      </p>
+      <h3 class="about-subtitle">Founder</h3>
+      <p class="about-text"><strong id="about-founder-text">Jitumoni</strong> &mdash; creator and founder of this project.</p>
+      <p class="about-copyright">&copy; <span class="copyright-year-inline">2026</span> <span class="founder-name-inline">Jitumoni</span>. All rights
+        reserved. This work, including its design and code, is the property of <span class="founder-name-inline">Jitumoni</span> and may not be
+        reproduced or redistributed without permission.
+      </p>
+    </div>
+  </div>
+
+  <div id="list-overlay" class="about-overlay" hidden>
+    <div class="about-card br list-card">
+      <button id="list-close" class="about-close" aria-label="Close">&times;</button>
+      <h2 class="about-title">Element data — quick revision</h2>
+      <input id="list-search" type="text" class="list-search-input"
+        placeholder="Search by name, symbol, or category&hellip;" autocomplete="off">
+      <p class="list-hint">Tap a row to view its atom structure.</p>
+      <div class="list-table-wrap">
+        <table class="list-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Sym</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Block</th>
+              <th>Valency</th>
+              <th>Shells</th>
+              <th>Mass (u)</th>
+            </tr>
+          </thead>
+          <tbody id="list-table-body"></tbody>
+        </table>
+      </div>
+      <p class="list-empty-msg" id="list-empty-msg" hidden>No elements match your search.</p>
+    </div>
+  </div>
+
+  <div id="quiz-overlay" class="about-overlay" hidden>
+    <div class="about-card br quiz-card">
+      <button id="quiz-close" class="about-close" aria-label="Close">&times;</button>
+      <h2 class="about-title">Quick quiz</h2>
+      <p class="quiz-score" id="quiz-score">Score: 0 / 0</p>
+      <p class="quiz-question" id="quiz-question">Loading question&hellip;</p>
+      <div class="quiz-options" id="quiz-options"></div>
+      <p class="quiz-feedback" id="quiz-feedback"></p>
+      <button id="quiz-next" class="quiz-next-btn">Next question</button>
+    </div>
+  </div>
+
+  <div id="atom-overlay" class="about-overlay" hidden>
+    <div class="about-card br atom-card">
+      <button id="atom-close" class="about-close" aria-label="Close">&times;</button>
+      <h2 class="about-title" id="atom-title">Atom structure</h2>
+      <div class="atom-stage" id="atom-stage"></div>
+      <div class="atom-info">
+        <p><strong>Protons:</strong> <span id="atom-protons"></span></p>
+        <p><strong>Neutrons (approx., from atomic mass):</strong> <span id="atom-neutrons"></span></p>
+        <p><strong>Electrons:</strong> <span id="atom-electrons"></span></p>
+        <p><strong>Shells:</strong> <span id="atom-shells"></span></p>
+        <p class="atom-config"><strong>Electron configuration:</strong><br><span id="atom-config"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <template id="element">
+    <button class="element" data-color="0">
+      <div class="element-number"></div>
+      <div class="element-symbol"></div>
+      <div class="element-title"></div>
+      <div class="element-description"></div>
+    </button>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
